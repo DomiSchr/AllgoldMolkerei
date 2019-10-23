@@ -266,32 +266,6 @@ hr {
 	border-bottom: 1px solid #E6E7DC;
 }
 
-/** SIDEBAR 1 */
-
-#sidebar1 {
-	float: right;
-	width: 250px;
-	margin-right: 50px;
-}
-
-#sidebar1 #box1 {
-	margin-bottom: 4em;
-}
-
-#sidebar1 h2,
-#sidebar2 h2
-{
-	font-size: 1.5em;
-	font-weight: 400;
-}
-
-/** SIDEBAR 2 */
-
-#sidebar2 {
-	float: right;
-	width: 250px;
-}
-
 /* List style 2 */
 
 ul.style2 {
