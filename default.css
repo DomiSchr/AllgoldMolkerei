@@ -151,13 +151,8 @@ a img {
 
 #page {
 	overflow: hidden;
-	padding: 5em 0em;
+	padding: 1.5em 0em;
 }
-
-	#page img
-	{
-		margin-bottom: 1em;
-	}
 
 	#page .title
 	{
