@@ -34,52 +34,6 @@ a img {
 	border: none;
 }
 
-/*********************************************************************************/
-/* Image Style                                                                   */
-/*********************************************************************************/
-
-	.image
-	{
-		display: inline-block;
-		border: 1px solid rgba(0,0,0,.1);
-	}
-	
-	.image img
-	{
-		display: block;
-		width: 100%;
-	}
-	
-	.image-full
-	{
-		display: block;
-		width: 100%;
-		margin: 0 0 3em 0;
-	}
-	
-	.image-left
-	{
-		float: left;
-		margin: 0 2em 2em 0;
-	}
-	
-	.image-centered
-	{
-		display: block;
-		margin: 0 0 2em 0;
-	}
-	
-	.image-centered img
-	{
-		margin: 0 auto;
-		width: auto;
-	}
-
-
-hr {
-	display: none;
-}
-
 /** WRAPPER */
 
 #wrapper {
@@ -100,7 +54,7 @@ hr {
 
 #header-wrapper
 {
-	background: url(images/bg.jpg) no-repeat top center;
+	background: url(background.jpg) no-repeat top center;
 	background-size: cover;
 }
 
