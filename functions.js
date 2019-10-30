@@ -1,3 +1,3 @@
-function getProducts{
+function getProducts(){
     alert("Es geht!");
 }
