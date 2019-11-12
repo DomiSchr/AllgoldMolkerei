@@ -1,4 +1,4 @@
-function getProducts()
+function getAllProducts()
 {
 alert("getProducts");
 	var url = "serverREST.php";
@@ -22,7 +22,8 @@ alert("getProducts");
 	            {
 		           if(request2.status == 200)
 		           {
-			           var stationtable = request2.responseText;
+					   var stationtable = request2.responseText;
+					   //Noch gelassen für Ausgabe!
 			           listStation(stationlist,stationtable);
 		            }
 	            };
@@ -32,4 +33,73 @@ alert("getProducts");
 		}
 	};
 	request.send(null);
+}
+
+function listStation(stationlist, getstationtable)
+{
+	alert(stationlist+getstationtable);
+	var list = document.getElementById("list");
+	var stations = JSON.parse(stationlist);
+	var stationtable = JSON.parse(getstationtable);
+
+
+	var table = document.createElement("table");
+	table.setAttribute("class", "test");
+
+    //table head
+    var tablehead = document.createElement("thead");
+    var tableRow = document.createElement("tr");
+
+    //wenn die tabllenid nicht angzeigt werden soll, muss h auf 1 gestetzt werden
+    var tableattr = 1;
+    for(var h = 0; h<tableattr; h++)
+    {
+    	var json = stationtable[0]; //in this case only one object exitsts
+    	var key = "td"+h;
+    	var tableval = json[key]; 
+    	if(tableval != undefined)
+    	{
+    		var tableCell = document.createElement("td");
+    	    var cellContent = document.createTextNode(tableval);
+    	    tableCell.appendChild(cellContent);
+    	    tableRow.appendChild(tableCell);
+
+    	    tableattr++; 
+    	}
+    }
+    tablehead.appendChild(tableRow); alert("länge des tableheaders"+ tableattr);
+
+
+
+    //table body
+	var tablebody = document.createElement("tbody");
+
+
+	for(var j = 0; j < stations.length; j++)
+	{
+	    var mycurrentRow = document.createElement("tr");
+
+	    for(var i = 0; i<tableattr; i++)
+	    {
+	    	var json = stationtable[0];
+	    	var jsonval = stations[j];
+	    	var key = "td" + i;
+	    	var value = json[key];
+	        var tableval = jsonval[value];
+	        if(tableval != undefined)
+	        {
+	            var mycurrentCell = document.createElement("td");
+		        var mycurrentText = document.createTextNode(tableval);
+		        mycurrentCell.appendChild(mycurrentText);
+		        mycurrentRow.appendChild(mycurrentCell);
+	        }
+	    }
+        tablebody.appendChild(mycurrentRow);
+    }
+	
+
+
+	table.appendChild(tablehead);
+	table.appendChild(tablebody);
+	list.appendChild(table);
 }

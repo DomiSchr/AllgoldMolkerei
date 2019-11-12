@@ -33,7 +33,7 @@ switch ($method)
 
     else
     {
-    	$sql = $station->getAllStations();
+    	$sql = $station->getAllProducts();
         header('Content-type: application/json; charset=utf-8'); 
         echo json_encode($sql);
         break;
@@ -50,7 +50,7 @@ switch ($method)
     $sql = $station->updateStation($data);
     if($sql == "OK")
     {
-    	$send = $station->getAllStations();
+    	$send = $station->getAllProducts();
         header('Content-type: application/json; charset=utf-8'); 
         echo json_encode($send);    	
     } 
