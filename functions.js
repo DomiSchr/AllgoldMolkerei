@@ -1,3 +1,23 @@
+function test(){
+	var request = new XMLHttpRequest();
+
+	request.onreadystatechange = function(){
+		if(request.readyState == 4){
+			if(request.status == 200){
+				document.getElementById("insert").textContent = request.responseText;
+			}
+
+			if(request.status == 404){
+				//Keine Ressource!
+			}
+		}
+	};
+
+	request.open("GET", "test.txt", true);
+	request.send(); 
+}
+
+
 function getAllProducts()
 {
 alert("getProducts");
