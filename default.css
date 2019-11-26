@@ -137,3 +137,11 @@ a {
 		font-weight: 400;
 		color: rgba(0,0,0,0.8);
 	}
+
+
+#list{
+	border: 0;
+	width:1000px;
+	line-height:1.8;
+
+}

@@ -27,7 +27,7 @@ class server
       
    }
 
-  // R ead 
+  // Read 
 
    public function getAllProducts()
    {

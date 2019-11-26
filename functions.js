@@ -59,7 +59,7 @@ function getAllProducts()
 
 function listStation(stationlist, getstationtable)
 {
-	
+
 	var list = document.getElementById("list");
 	var stations = JSON.parse(stationlist);
 	var stationtable = JSON.parse(getstationtable);
