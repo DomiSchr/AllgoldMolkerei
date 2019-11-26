@@ -20,13 +20,15 @@ function test(){
 
 function getAllProducts()
 {
-alert("getProducts");
+	alert("Was geht ab?");
 	var url = "serverREST.php";
+	
 	var method = "action=GET";
 	url += "?"+method;
 
 	var request = new XMLHttpRequest();
 	request.open("GET", url);
+	alert(url);
 	request.onload = function()
 	{
 		if(request.status == 200)

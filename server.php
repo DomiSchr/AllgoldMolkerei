@@ -8,14 +8,14 @@ class server
 
    public function __construct()
    {
-      $this->db = new mysqli("localhost:8080/phpmyadmin","root","", "AllgoldMolkerei"); // Könnte so gehen!
+      $this->db = new mysqli("localhost:8080/phpmyadmin","root",""); // Könnte so gehen!
 
       if (mysqli_connect_errno())
       {
       	die("error while connection to database!:".mysqli_connect_error());
       }
 
-      $this->db->select_db("grp101_IKS");
+      $this->db->select_db("AllgoldMolkerei");
 
       if($this->db->errno)
       {
