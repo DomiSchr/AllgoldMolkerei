@@ -8,7 +8,7 @@ class server
 
    public function __construct()
    {
-      $this->db = new mysqli("localhost:8080/phpmyadmin","root",""); // Könnte so gehen!
+      $this->db = new mysqli("localhost","root","", "AllgoldMolkerei"); // Funktioniert nicht hier!!
 
       if (mysqli_connect_errno())
       {
@@ -32,7 +32,7 @@ class server
    public function getAllProducts()
    {
       $allProducts = array();
-      $stmt = "SELECT * FROM products;";
+      $stmt = "SELECT * FROM produkt ;";
       $result = $this->db->query($stmt);
 
         if(empty($result))
