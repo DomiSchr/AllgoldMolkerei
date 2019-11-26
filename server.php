@@ -8,7 +8,7 @@ class server
 
    public function __construct()
    {
-      $this->db = new mysqli("192.168.101.221","grp101","ITTgrp101");
+      $this->db = new mysqli("localhost:8080/phpmyadmin","root","", "AllgoldMolkerei"); // Könnte so gehen!
 
       if (mysqli_connect_errno())
       {
@@ -23,12 +23,15 @@ class server
       }
    }
 
+   public function test(){
+      
+   }
 
   // R ead 
 
    public function getAllProducts()
    {
-      $allStations = array();
+      $allProducts = array();
       $stmt = "SELECT * FROM products;";
       $result = $this->db->query($stmt);
 
@@ -42,7 +45,7 @@ class server
         $allStations[] = $row;
       }
 
-      return  $allStations;
+      return  $allProducts;
    }
 }
 

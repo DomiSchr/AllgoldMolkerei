@@ -35,7 +35,7 @@ alert("getProducts");
 
 
                 //getTable header for data
-				var url2 = "includes/stationtable.json";
+				var url2 = "products.json";
 	            var request2 = new XMLHttpRequest();
 	            request2.open("GET", url2);
 	            request2.onload = function()

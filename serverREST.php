@@ -15,9 +15,9 @@ switch ($method)
 {
   case 'GET':
 
-    if(!empty($data['stationID']))
+    if(!empty($data['produktID']))
     {
-    	$sql = $station->getCoordinates($data['stationID']);
+    	$sql = $station->getCoordinates($data['produktID']);
         header('Content-type: application/json; charset=utf-8'); 
         echo json_encode($sql); 
         break;
