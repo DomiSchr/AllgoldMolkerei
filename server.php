@@ -32,7 +32,7 @@ class server
    public function getAllProducts()
    {
       $allProducts = array();
-      $stmt = "SELECT * FROM produkt ;";
+      $stmt = "SELECT * FROM produkt;";
       $result = $this->db->query($stmt);
 
         if(empty($result))
@@ -42,7 +42,7 @@ class server
 
       while ($row = $result->fetch_assoc()) 
       {
-        $allStations[] = $row;
+        $allProducts[] = $row;
       }
 
       return  $allProducts;
