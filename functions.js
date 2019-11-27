@@ -57,6 +57,17 @@ function getAllProducts()
 	request.send(null);
 }
 
+
+function einkaufErfassen(){
+	var station = document.getElementById("stationID").value;
+	var produkt = document.getElementById("produktID").value;
+	var menge = document.getElementById("menge").value;
+
+
+	alert(station +  produkt + menge);
+
+}
+
 function listStation(stationlist, getstationtable)
 {
 
