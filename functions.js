@@ -72,7 +72,7 @@ function einkaufErfassen(){
 //einfach nur kopiert, passt noch nicht!
 function fehlProdukte(){
 	var station = document.getElementById("stationID").value;
-	alert(station);
+
 	var url = "serverREST.php";
 	
 	var method = "action=GET";
