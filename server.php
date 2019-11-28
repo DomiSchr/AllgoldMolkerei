@@ -47,6 +47,30 @@ class server
 
       return  $allProducts;
    }
+
+   public function missingProducts($station)
+   {
+        $allStations = array();
+        //SQL Query anpassen!! Nur Test!
+   	  $stmt = "SELECT * FROM produkt WHERE ProduktID = '".$station."';";
+         $result = $this->db->query($stmt);
+
+        if(empty($result))
+        {
+           return "your statement: ".$stmt."<br /> received result:".$result;
+        }
+
+      while ($row = $result->fetch_assoc()) 
+      {
+        $allStations[] = $row;
+      }
+
+      return $allStations;
+   }
+
+
+
+
 }
 
 ?>

@@ -71,22 +71,21 @@ function einkaufErfassen(){
 
 //einfach nur kopiert, passt noch nicht!
 function fehlProdukte(){
-	var station = document.getElementById("stationID").value;
 
 	var url = "serverREST.php";
-	
 	var method = "action=GET";
-	url += "?"+method;
+
+	var stationID = document.getElementById("stationID").value;
+	
+	url += "?"+method+"&"+"stationID"+"="+stationID;
 
 	var request = new XMLHttpRequest();
 	request.open("GET", url);
-
 	request.onload = function()
 	{
 		if(request.status == 200)
 		{
 			var stationlist = request.responseText;
-
 
                 //getTable header for data
 				var url2 = "products.json";
@@ -96,8 +95,7 @@ function fehlProdukte(){
 	            {
 		           if(request2.status == 200)
 		           {
-					   var stationtable = request2.responseText;
-					   //Noch gelassen für Ausgabe!
+			           var stationtable = request2.responseText;
 			           listStation(stationlist,stationtable);
 		            }
 	            };

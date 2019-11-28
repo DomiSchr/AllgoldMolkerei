@@ -23,9 +23,9 @@ switch ($method)
         break;
     }
 
-    if(!empty($data['location']))
+    if(!empty($data['stationID']))
     {
-        $sql = $station->findByLocation($data['location']);
+        $sql = $station->missingProducts($data['stationID']);
         header('Content-type: application/json; charset=utf-8');
         echo json_encode($sql);
         break;
