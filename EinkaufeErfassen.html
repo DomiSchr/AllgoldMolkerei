@@ -37,11 +37,27 @@
 		<element class = "title">
 		<h2>Einkäufe erfassen:</h2>
 		<div id = "content">
-				<input id="stationID" name="stationID" placeholder="stationID" class="form-control input-md" required="" type="text">
-				<input id="produktID" name="produktID" placeholder="produktID" class="form-control input-md" required="" type="text">
-				<input id="menge" name="menge" placeholder="menge" class="form-control input-md" required="" type="text">
+			<!--
+				Mit Form machen, könnte einfacher gehen!
+			-->
+			
+			<form class="form-horizontal" action="stationREST.php" method="POST">
+					<fieldset>
+							<input type="hidden" name="action" value = "POST">
 
-			<button onclick="einkaufErfassen()">erfassen</button>
+						        <!-- Text input-->
+								<div class="form-group">
+										<label class="col-md-4 control-label" for="coordsA">Breitengrad</label>  
+										<div class="col-md-4">
+										  <input id="coordsA" name="coordsA" placeholder="22.2222222" class="form-control input-md" required="" type="text">
+										</div>
+								</div>
+								
+
+					</fieldset>
+			</form>
+
+
 			<p id = "insert"></p> 
 			<fieldset id = "list">
 				
