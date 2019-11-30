@@ -98,6 +98,30 @@ class server
    }
 
 
+//Update:
+   public function updateStation($data)
+   {
+     //create insert string
+     //SQL passt nicht! DB passt nicht!
+     $stmt = "UPDATE station SET coordsA = '".$data['coordsA']."',
+                                 coordsL = '".$data['coordsL']."',
+                                location = '".$data['location']."',
+                                    type = '".$data['type']."',
+                             description =  '".$data['description']."'
+                             WHERE stationID = ".$data['stationID']." ;";
+ 
+     //commit db request
+     $result = $this->db->query($stmt);
+ 
+     if($result == 1)
+     {
+       return "OK";
+     }
+ 
+     return "your statement: ".$stmt."<br /> received result:".$result;
+   }
+
+
 }
 
 ?>
