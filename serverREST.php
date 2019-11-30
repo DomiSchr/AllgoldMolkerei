@@ -7,7 +7,7 @@ include('server.php');
 $station = new server();
 $data = array_merge($_GET, $_POST);
 $method = $data['action'];
-// $retlnk = '<br> <a href="index.html"> zur&uuml;ck zur Homeseite </a>';
+$retlnk = '<br> <a href="index.html"> zur&uuml;ck zur Homeseite </a>';
 
 
  // create SQL based on HTTP method

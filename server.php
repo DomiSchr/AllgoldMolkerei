@@ -80,10 +80,10 @@ class server
          preis,
          menge,
    	   ) VALUES (
-   	   ".$data['produktID'].",
-   	   'Test',
-         '2',
-       '".$data['menge']."'
+   	   '".$data['produktID']."',
+   	   '".$data['stationID']."',
+         '".$data['menge']."',
+         '".$data['produktID']."'
    	   );";
 
        //commit db request
