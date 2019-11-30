@@ -109,7 +109,7 @@ function fehlProdukte(){
 
 function listStation(stationlist, getstationtable)
 {
-
+	alert(stationlist+getstationtable);
 	var list = document.getElementById("list");
 	var stations = JSON.parse(stationlist);
 	var stationtable = JSON.parse(getstationtable);
@@ -139,7 +139,7 @@ function listStation(stationlist, getstationtable)
     	    tableattr++; 
     	}
     }
-    tablehead.appendChild(tableRow);
+    tablehead.appendChild(tableRow); alert("länge des tableheaders"+ tableattr);
 
 
 

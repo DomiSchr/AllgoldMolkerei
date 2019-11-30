@@ -68,7 +68,34 @@ class server
       return $allStations;
    }
 
+   // Create
 
+   public function addStation($data)
+   {
+         //create insert string
+         //Passt nicht, nur für Testzwecke!
+   	   $stmt = "INSERT INTO produkt ( 
+   	   produktID,
+   	   name,
+         preis,
+         menge,
+   	   ) VALUES (
+   	   ".$data['produktID'].",
+   	   'Test',
+         '2',
+       '".$data['menge']."'
+   	   );";
+
+       //commit db request
+   	   $result = $this->db->query($stmt);
+
+   	   if($result == 1)
+   	   {
+   	   	 return "Product succesfully inserted.";
+   	   }
+
+   	   return "your statment: ".$stmt."<br /> received result:".$result;
+   }
 
 
 }
