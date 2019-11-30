@@ -80,7 +80,7 @@ class server
          preis,
          menge,
    	   ) VALUES (
-   	   '".$data['produktID']."',
+   	   ".$data['produktID'].",
    	   '".$data['stationID']."',
          '".$data['menge']."',
          '".$data['produktID']."'
