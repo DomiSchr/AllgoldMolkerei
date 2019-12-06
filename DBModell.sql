@@ -8,8 +8,6 @@ CREATE TABLE IF NOT EXISTS `Product` (
 );
 
 
---- Fremdschlüssel fehlen überall!
-
 CREATE TABLE IF NOT EXISTS `Station` (
   `StationID` int(10) NOT NULL AUTO_INCREMENT,
   `Beschreibung` varchar(30) NOT NULL,
@@ -40,9 +38,11 @@ CREATE TABLE IF NOT EXISTS `Sales` (
   `StationID` int(10) NOT NULL,
   `ProduktID` int(10) NOT NULL,
   `Menge` varchar(10) NOT NULL,
-  `SollMenge` varchar(10) NOT NULL,
   PRIMARY KEY (`SalesID`),
-  
+  FOREIGN KEY `StationID`(`StationID`)
+  REFERENCES `Station`(`StationID`),
+  FOREIGN KEY `ProduktID`(`ProduktID`)
+  REFERENCES `Product`(`ProduktID`)
 );
 
 
