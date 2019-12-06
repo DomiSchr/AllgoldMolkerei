@@ -32,7 +32,7 @@ class server
    public function getAllProducts()
    {
       $allProducts = array();
-      $stmt = "SELECT * FROM produkt;";
+      $stmt = "SELECT * FROM product;";
       $result = $this->db->query($stmt);
 
         if(empty($result))
@@ -52,7 +52,7 @@ class server
    {
         $allStations = array();
         //SQL Query anpassen!! Nur Test!
-   	  $stmt = "SELECT * FROM produkt WHERE ProduktID = '".$station."';";
+   	  $stmt = "SELECT * FROM Product WHERE ProduktID = '".$station."';";
          $result = $this->db->query($stmt);
 
         if(empty($result))
