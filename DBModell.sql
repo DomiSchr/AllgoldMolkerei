@@ -34,10 +34,8 @@ CREATE TABLE IF NOT EXISTS `sales` (
   `salesID` int(10) NOT NULL AUTO_INCREMENT,
   `stationID` int(10) NOT NULL,
   `produktID` int(10) NOT NULL,
-  `menge` varchar(10) NOT NULL,
-  `sollmenge` varchar(10) NOT NULL,
+  `menge` int(10) NOT NULL,
   PRIMARY KEY (`salesID`),
-  
 );
 
 
@@ -46,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `sales` (
 INSERT INTO `product` (`produktID`, `name`, `preis`, `menge`) VALUES
 (1, 'Vollmilch', '3.5', '1L'),
 (2, 'Käse', '1.2', '100g');
+
 
 INSERT INTO `station`(`stationID`, `beschreibung`, `standort`) VALUES 
 (1, "Automat1", "Kempten");
@@ -56,8 +55,9 @@ INSERT INTO `inventory`(`inventoryID`, `stationID`, `produktID`, `aktmenge` , `m
 (2, 1, 2, 1, 5, 10);
 
 
-
-
+INSERT INTO `sales`(`salesID`, `stationID`, `produktID`, `menge`) VALUES
+(1, 1, 1, 0),
+(2, 1, 2, 0);
 
 
 
@@ -67,3 +67,7 @@ SELECT p.* FROM product p, inventory i WHERE
 p.produktID = i.produktID
 AND i.aktMenge < i.minMenge
 AND i.stationID = 1;
+
+
+
+INSERT INTO sales

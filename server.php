@@ -76,26 +76,33 @@ class server
 
    public function addStation($data)
    {
-         //create insert string
-         //Passt nicht, nur für Testzwecke!
-   	   $stmt = "INSERT INTO produkt ( 
-   	   produktID,
-   	   name,
-         preis,
-         menge,
-   	   ) VALUES (
-   	   ".$data['produktID'].",
-   	   '".$data['stationID']."',
-         '".$data['menge']."',
-         '".$data['produktID']."'
-   	   );";
+      
+         //TODO: Vor erfasstem Einkauf muss geprüft werden, ob genug Waren da sind!!
 
-       //commit db request
+         //Stmt updatet Inventory-Tabelle:
+   	   $stmt = "UPDATE inventory SET aktmenge = aktmenge - '".$data['menge']."'
+         WHERE stationID = '".$data['stationID']."'
+         AND produktID = '".$data['produktID']."'
+         ;";
+
    	   $result = $this->db->query($stmt);
 
    	   if($result == 1)
    	   {
-   	   	 return "Product succesfully inserted.";
+   	   	
+   	   }
+
+         //Stmt updatet Sale-Tabelle
+   	   $stmt = "UPDATE sales SET menge = menge + '".$data['menge']."'
+         WHERE stationID = '".$data['stationID']."'
+         AND produktID = '".$data['produktID']."'
+         ;";
+
+   	   $result = $this->db->query($stmt);
+
+   	   if($result == 1)
+   	   {
+   	   	 return "Sale succesfully inserted.";
    	   }
 
    	   return "your statment: ".$stmt."<br /> received result:".$result;
