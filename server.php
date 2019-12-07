@@ -52,7 +52,11 @@ class server
    {
         $allStations = array();
         //SQL Query anpassen!! Nur Test!
-   	  $stmt = "SELECT * FROM Product WHERE ProduktID = '".$station."';";
+        $stmt = "SELECT * FROM product p, inventory i WHERE
+        p.produktID = i.produktID
+        AND i.aktMenge < i.minMenge
+        AND i.stationID = '".$station."';";
+
          $result = $this->db->query($stmt);
 
         if(empty($result))
@@ -102,7 +106,7 @@ class server
 //Auslieferung:
    public function updateStation($data)
    {
-     // Funktioniert, ReturnScreen passt ist hässlich!!
+     // Funktioniert, ReturnScreen ist hässlich!!
      $stmt = "UPDATE inventory SET aktMenge = '".$data['menge']."'
                              WHERE stationID = ".$data['stationID']." 
                              AND produktID = '".$data['produktID']."'

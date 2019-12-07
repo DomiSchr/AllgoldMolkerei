@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `inventoryID` int(10) NOT NULL AUTO_INCREMENT,
   `stationID` int(10) NOT NULL,
   `produktID` int(10) NOT NULL,
-  `aktMenge` varchar(10) NOT NULL,
-  `minMenge` varchar(10) NOT NULL,
-  `sollMenge` varchar(10) NOT NULL,
+  `aktMenge` int(10) NOT NULL,
+  `minMenge` int(10) NOT NULL,
+  `sollMenge` int(10) NOT NULL,
   PRIMARY KEY (`inventoryID`),
   CONSTRAINT `FK_stationID` FOREIGN KEY (`stationID`) REFERENCES `station`(`stationID`),
   CONSTRAINT `FK_produktID` FOREIGN KEY (`produktID`) REFERENCES `product`(`produktID`)
@@ -55,3 +55,15 @@ INSERT INTO `inventory`(`inventoryID`, `stationID`, `produktID`, `aktmenge` , `m
 (1, 1, 1, 5, 3, 10),
 (2, 1, 2, 1, 5, 10);
 
+
+
+
+
+
+
+
+
+SELECT p.* FROM product p, inventory i WHERE
+p.produktID = i.produktID
+AND i.aktMenge < i.minMenge
+AND i.stationID = 1;
