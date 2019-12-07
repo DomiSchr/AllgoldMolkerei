@@ -44,22 +44,13 @@ switch ($method)
 // Einkäufe erfassen:
   case 'POST':
     $sql = $station->addStation($data); 
-    echo "Antwort: ".$sql.$retlnk;
+    echo "".$sql.$retlnk;
     break;
 
     // Auslieferung: 
   case 'PUT':
     $sql = $station->updateStation($data);
-    if($sql == "OK")
-    {
-    	$send = $station->getAllProducts();
-        header('Content-type: application/json; charset=utf-8'); 
-        echo json_encode($send);    	
-    } 
-    else
-    {
-    	echo $sql;
-    }
+    echo "".$sql.$retlnk;    	
     break;
 
   case 'DELETE':

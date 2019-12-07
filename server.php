@@ -51,7 +51,7 @@ class server
    public function missingProducts($station)
    {
         $allStations = array();
-        //SQL Query anpassen!! Nur Test!
+      
         $stmt = "SELECT * FROM product p, inventory i WHERE
         p.produktID = i.produktID
         AND i.aktMenge < i.minMenge
@@ -78,6 +78,8 @@ class server
    {
       
          //TODO: Vor erfasstem Einkauf muss geprüft werden, ob genug Waren da sind!!
+
+
 
          //Stmt updatet Inventory-Tabelle:
    	   $stmt = "UPDATE inventory SET aktmenge = aktmenge - '".$data['menge']."'
@@ -113,7 +115,7 @@ class server
 //Auslieferung:
    public function updateStation($data)
    {
-     // Funktioniert, ReturnScreen ist hässlich!!
+   
      $stmt = "UPDATE inventory SET aktMenge = '".$data['menge']."'
                              WHERE stationID = ".$data['stationID']." 
                              AND produktID = '".$data['produktID']."'
@@ -124,7 +126,7 @@ class server
    
      if($result == 1)
      {
-       return "OK";
+       return "Die Produkte wurden erfolgreich ausgeliefert!";
      }
  
      return "your statement: ".$stmt."<br /> received result:".$result;
