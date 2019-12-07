@@ -41,11 +41,13 @@ switch ($method)
 
     break;
 
+// Einkäufe erfassen:
   case 'POST':
     $sql = $station->addStation($data); 
     echo "Antwort: ".$sql.$retlnk;
     break;
 
+    // Auslieferung: 
   case 'PUT':
     $sql = $station->updateStation($data);
     if($sql == "OK")

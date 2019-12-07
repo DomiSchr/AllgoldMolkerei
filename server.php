@@ -99,20 +99,18 @@ class server
 
 
 //Update:
+//Auslieferung:
    public function updateStation($data)
    {
-     //create insert string
-     //SQL passt nicht! DB passt nicht!
-     $stmt = "UPDATE station SET coordsA = '".$data['coordsA']."',
-                                 coordsL = '".$data['coordsL']."',
-                                location = '".$data['location']."',
-                                    type = '".$data['type']."',
-                             description =  '".$data['description']."'
-                             WHERE stationID = ".$data['stationID']." ;";
+     // Funktioniert, ReturnScreen passt ist hässlich!!
+     $stmt = "UPDATE inventory SET aktMenge = '".$data['menge']."'
+                             WHERE stationID = ".$data['stationID']." 
+                             AND produktID = '".$data['produktID']."'
+     ;";
  
      //commit db request
      $result = $this->db->query($stmt);
- 
+   
      if($result == 1)
      {
        return "OK";
