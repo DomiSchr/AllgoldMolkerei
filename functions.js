@@ -143,6 +143,44 @@ function umsatzStation(){
 	request.send(null);
 }
 
+//Noch nicht weiter, php + SQL fehlt noch!
+function umsatzProdukt(){
+
+	var url = "serverREST.php";
+	var method = "action=GET";
+
+	var produktID = document.getElementById("produktID").value;
+	
+	url += "?"+method+"&"+"produktID"+"="+produktID;
+
+	var request = new XMLHttpRequest();
+	request.open("GET", url);
+	request.onload = function()
+	{
+		if(request.status == 200)
+		{
+			alert(request.responseText);
+
+                //getTable header for data
+				//var url2 = "products.json";
+	            //var request2 = new XMLHttpRequest();
+	            //request2.open("GET", url2);
+	            //request2.onload = function()
+	            //{
+		        //   if(request2.status == 200)
+		        //  {
+			    //       var stationtable = request2.responseText;
+			    //       listStation(stationlist,stationtable);
+		        //    }
+	            //};
+	            //request2.send(null);
+
+			
+		}
+	};
+	request.send(null);
+}
+
 
 
 function listStation(stationlist, getstationtable)
