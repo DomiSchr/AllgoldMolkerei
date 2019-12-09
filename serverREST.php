@@ -31,6 +31,16 @@ switch ($method)
         break;
     }
 
+    //Methode für Umsatz der Station!
+    if(!empty($data['stationID2']))
+    {
+        $sql = $station->umsatzStation($data['stationID2']);
+        header('Content-type: application/json; charset=utf-8');
+        //echo json_encode($sql);
+        echo $sql;
+        break;
+    }
+
     else
     {
     	$sql = $station->getAllProducts();

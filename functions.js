@@ -68,8 +68,7 @@ function einkaufErfassen(){
 
 }
 
-
-//einfach nur kopiert, passt noch nicht!
+//geht noch nicht
 function fehlProdukte(){
 
 	var url = "serverREST.php";
@@ -107,7 +106,42 @@ function fehlProdukte(){
 	request.send(null);
 }
 
+function umsatzStation(){
 
+	var url = "serverREST.php";
+	var method = "action=GET";
+
+	var stationID2 = document.getElementById("stationID").value;
+	
+	url += "?"+method+"&"+"stationID2"+"="+stationID2;
+
+	var request = new XMLHttpRequest();
+	request.open("GET", url);
+	request.onload = function()
+	{
+		if(request.status == 200)
+		{
+			alert(request.responseText);
+
+                //getTable header for data
+				//var url2 = "products.json";
+	            //var request2 = new XMLHttpRequest();
+	            //request2.open("GET", url2);
+	            //request2.onload = function()
+	            //{
+		        //   if(request2.status == 200)
+		        //  {
+			    //       var stationtable = request2.responseText;
+			    //       listStation(stationlist,stationtable);
+		        //    }
+	            //};
+	            //request2.send(null);
+
+			
+		}
+	};
+	request.send(null);
+}
 
 
 

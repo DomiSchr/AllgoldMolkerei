@@ -132,6 +132,16 @@ class server
      return "your statement: ".$stmt."<br /> received result:".$result;
    }
 
+   public function umsatzStation($data)
+   {
+      //Passt noch nicht:
+      //$stmt = "UPDATE inventory SET aktMenge = '".$data['menge']."'
+      //WHERE stationID = ".$data['stationID']." 
+      //AND produktID = '".$data['produktID']."'
+      //;";
+
+      return 5;
+   }
 
 }
 
