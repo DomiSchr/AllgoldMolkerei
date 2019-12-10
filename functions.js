@@ -121,23 +121,7 @@ function umsatzStation(){
 	{
 		if(request.status == 200)
 		{
-			alert(request.responseText);
-
-                //getTable header for data
-				//var url2 = "products.json";
-	            //var request2 = new XMLHttpRequest();
-	            //request2.open("GET", url2);
-	            //request2.onload = function()
-	            //{
-		        //   if(request2.status == 200)
-		        //  {
-			    //       var stationtable = request2.responseText;
-			    //       listStation(stationlist,stationtable);
-		        //    }
-	            //};
-	            //request2.send(null);
-
-			
+			document.getElementById("insert1").textContent = "Umsatz Verkaufsstelle " + stationID2 + ": " + request.responseText.substring(12, 17) + "€";
 		}
 	};
 	request.send(null);
@@ -159,23 +143,9 @@ function umsatzProdukt(){
 	{
 		if(request.status == 200)
 		{
-			alert(request.responseText);
-
-                //getTable header for data
-				//var url2 = "products.json";
-	            //var request2 = new XMLHttpRequest();
-	            //request2.open("GET", url2);
-	            //request2.onload = function()
-	            //{
-		        //   if(request2.status == 200)
-		        //  {
-			    //       var stationtable = request2.responseText;
-			    //       listStation(stationlist,stationtable);
-		        //    }
-	            //};
-	            //request2.send(null);
-
 			
+			//document.getElementById("insert2").textContent = "Hallo";
+			alert(request.responseText);
 		}
 	};
 	request.send(null);

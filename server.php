@@ -23,10 +23,6 @@ class server
       }
    }
 
-   public function test(){
-      
-   }
-
   // Read 
 
    public function getAllProducts()
@@ -132,15 +128,32 @@ class server
      return "your statement: ".$stmt."<br /> received result:".$result;
    }
 
+
+   //Umsatz pro Station ausgeben:
    public function umsatzStation($data)
    {
       //Passt noch nicht:
-      //$stmt = "UPDATE inventory SET aktMenge = '".$data['menge']."'
-      //WHERE stationID = ".$data['stationID']." 
-      //AND produktID = '".$data['produktID']."'
-      //;";
+      $ret = array();
+      $stmt = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
+      p.produktID = s.produktID
+      AND s.stationID = '".$data."'
+      ;";
 
-      return 5;
+      $result = $this->db->query($stmt);
+      if(!empty($result)){
+
+         while ($row = $result->fetch_assoc()) 
+         {
+           $ret[] = $row;
+         }
+
+         return  $ret[0];
+
+
+
+      }
+
+      return $data;
    }
 
 }

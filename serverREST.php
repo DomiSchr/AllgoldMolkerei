@@ -36,8 +36,8 @@ switch ($method)
     {
         $sql = $station->umsatzStation($data['stationID2']);
         header('Content-type: application/json; charset=utf-8');
-        //echo json_encode($sql);
-        echo $sql;
+        echo json_encode($sql);
+        //echo $sql;
         break;
     }
 

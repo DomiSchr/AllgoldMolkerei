@@ -28,8 +28,7 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   CONSTRAINT `FK_produktID` FOREIGN KEY (`produktID`) REFERENCES `product`(`produktID`)
 );
 
-
---- Passt noch nicht:
+--Fremschlüssel dazufügen!!
 CREATE TABLE IF NOT EXISTS `sales` (
   `salesID` int(10) NOT NULL AUTO_INCREMENT,
   `stationID` int(10) NOT NULL,
@@ -70,4 +69,9 @@ AND i.stationID = 1;
 
 
 
-INSERT INTO sales
+-- Tabelle, in der ID, Menge*Preis pro Station Drinsteht!drinsteht
+
+SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p where 
+p.produktID = s.produktID
+AND s.stationID = 1;
+
