@@ -17,7 +17,7 @@ switch ($method)
 
     if(!empty($data['produktID']))
     {
-    	$sql = $station->getCoordinates($data['produktID']);
+    	$sql = $station->umsatzProdukt($data['produktID']);
         header('Content-type: application/json; charset=utf-8'); 
         echo json_encode($sql); 
         break;

@@ -75,3 +75,9 @@ SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p where
 p.produktID = s.produktID
 AND s.stationID = 1;
 
+
+-- Tabelle für Anteile eines Produkts am Gesamtumsatz:
+
+SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
+p.produktID = s.produktID
+AND p.produktID = 1;

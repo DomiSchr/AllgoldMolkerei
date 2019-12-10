@@ -132,7 +132,6 @@ class server
    //Umsatz pro Station ausgeben:
    public function umsatzStation($data)
    {
-      //Passt noch nicht:
       $ret = array();
       $stmt = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
       p.produktID = s.produktID
@@ -153,7 +152,32 @@ class server
 
       }
 
-      return $data;
+      return "Error";
+   }
+
+
+   //Umsatz pro Produkt:
+   //geht noch nicht:
+   public function umsatzProdukt($data){
+      $ret = array();
+      $stmt1 = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
+      p.produktID = s.produktID
+      AND p.produktID = '".$data."'
+      ;";
+
+      $result = $this->db->query($stmt);
+      if(!empty($result)){
+
+         while ($row = $result->fetch_assoc()) 
+         {
+           $ret[] = $row;
+         }
+
+         return  $ret[0];
+
+      }
+
+      return "Error";
    }
 
 }

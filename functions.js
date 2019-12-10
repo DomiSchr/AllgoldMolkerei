@@ -68,7 +68,6 @@ function einkaufErfassen(){
 
 }
 
-//geht noch nicht
 function fehlProdukte(){
 
 	var url = "serverREST.php";
