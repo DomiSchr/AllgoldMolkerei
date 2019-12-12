@@ -10,7 +10,7 @@ function test(){
 			if(request.status == 404){
 				//Keine Ressource!
 			}
-		}
+		} 
 	};
 
 	request.open("GET", "test.txt", true);
@@ -120,17 +120,18 @@ function umsatzStation(){
 	{
 		if(request.status == 200)
 		{
+			//Prüfen, ob ungültige Verkauffstelle eingegeben:
 			if(request.responseText.indexOf(",") == 2){
+
 				document.getElementById("insert1").textContent = "ungültige Verkaufsstelle eingegeben!";
+
+			} else {
+				var stat = request.responseText.substring(2, request.responseText.indexOf(","));
+				var ges = request.responseText.substring(request.responseText.indexOf(",") + 1, request.responseText.length - 2);
+				document.getElementById("insert1").textContent = "Umsatz Verkaufsstelle " + stationID2 + " : " + stat + "€ entspricht: " + (Math.round((stat/ges)*10000))/100 + "%";
+				document.getElementById("insert2").textContent = "Gesamtumsatz: " + ges + "€";
+
 			}
-			document.getElementById("insert1").textContent = "Umsatz Verkaufsstelle " + stationID2 + ": " + request.responseText.substring(2, 7) + "€";
-			var stat = request.responseText.substring(2, request.responseText.indexOf(","));
-			var ges = request.responseText.substring(request.responseText.indexOf(",") + 1, request.responseText.length - 2);
-			
-			document.getElementById("insert1").textContent = "Umsatz Verkaufsstelle " + stationID2 + " : " + stat + "€ entspricht: " + Math.round((stat/ges) * 100, 4) + "%";
-			document.getElementById("insert2").textContent = "Gesamtumsatz: " + ges + "€";
-
-
 		}
 	};
 	request.send(null);
@@ -152,14 +153,15 @@ function umsatzProdukt(){
 	{
 		if(request.status == 200)
 		{
-			//String geht jetzt
-			//Runden evtl. genauer!!
-			//String parsen, um Umsatz zu finden:
-			var prod = request.responseText.substring(2, request.responseText.indexOf(","));
-			var ges = request.responseText.substring(request.responseText.indexOf(",") + 1, request.responseText.length - 2);
-			
-			document.getElementById("insert3").textContent = "Umsatz Produkt " + produktID + " : " + prod + "€ entspricht: " + Math.round((prod/ges) * 100, 4) + "%";
-			document.getElementById("insert4").textContent = "Gesamtumsatz: " + ges + "€";
+			if(request.responseText.indexOf(",") == 2){
+				document.getElementById("insert3").textContent = "Ungültiges Produkt eingegeben!";
+
+			} else {
+				var prod = request.responseText.substring(2, request.responseText.indexOf(","));
+				var ges = request.responseText.substring(request.responseText.indexOf(",") + 1, request.responseText.length - 2);
+				document.getElementById("insert3").textContent = "Umsatz Produkt " + produktID + " : " + prod + "€ entspricht: " + (Math.round((prod/ges)*10000))/100 + "%";
+				document.getElementById("insert4").textContent = "Gesamtumsatz: " + ges + "€";
+			}
 		}
 	};
 	request.send(null);
