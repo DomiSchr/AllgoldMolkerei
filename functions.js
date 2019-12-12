@@ -120,13 +120,22 @@ function umsatzStation(){
 	{
 		if(request.status == 200)
 		{
-			document.getElementById("insert1").textContent = "Umsatz Verkaufsstelle " + stationID2 + ": " + request.responseText.substring(12, 17) + "€";
+
+			//String hier parsen wie unten!!
+			document.getElementById("insert1").textContent = "Umsatz Verkaufsstelle " + stationID2 + ": " + request.responseText.substring(2, 7) + "€";
+			var stat = request.responseText.substring(2, 7);
+			var ges = request.responseText.substring(8, 14);
+			
+			document.getElementById("insert1").textContent = "Umsatz Verkaufsstelle " + stationID2 + " : " + stat + "€ entspricht: " + Math.round((stat/ges) * 100, 4) + "%";
+			document.getElementById("insert2").textContent = "Gesamtumsatz: " + ges + "€";
+
+
 		}
 	};
 	request.send(null);
 }
 
-//Noch nicht weiter, php + SQL fehlt noch!
+
 function umsatzProdukt(){
 
 	var url = "serverREST.php";
@@ -142,9 +151,14 @@ function umsatzProdukt(){
 	{
 		if(request.status == 200)
 		{
+			//String geht jetzt
+			//Runden evtl. genauer!!
+			//String parsen, um Umsatz zu finden:
+			var prod = request.responseText.substring(2, request.responseText.indexOf(","));
+			var ges = request.responseText.substring(request.responseText.indexOf(",") + 1, request.responseText.length - 2);
 			
-			//document.getElementById("insert2").textContent = "Hallo";
-			alert(request.responseText);
+			document.getElementById("insert3").textContent = "Umsatz Produkt " + produktID + " : " + prod + "€ entspricht: " + Math.round((prod/ges) * 100, 4) + "%";
+			document.getElementById("insert4").textContent = "Gesamtumsatz: " + ges + "€";
 		}
 	};
 	request.send(null);

@@ -137,6 +137,7 @@ class server
       p.produktID = s.produktID
       AND s.stationID = '".$data."'
       ;";
+      $ausg = "";
 
       $result = $this->db->query($stmt);
       if(!empty($result)){
@@ -146,13 +147,35 @@ class server
            $ret[] = $row;
          }
 
-         return  $ret[0];
-
-
-
+        $ausg .= implode($ret[0]);
       }
 
-      return "Error";
+
+                   //Gesamtumsatz:
+                   $stmt2 = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
+                   p.produktID = s.produktID
+                   ;";
+             
+                   $result2 = $this->db->query($stmt2);
+                   if(!empty($result2)){
+             
+                      while ($row2 = $result2->fetch_assoc()) 
+                      {
+                        $ret2[] = $row2;
+                      }
+             
+                      $ausg .= ", ".implode($ret2[0]);
+             
+                   }
+
+
+
+
+         
+
+      
+
+      return $ausg;
    }
 
 
@@ -168,33 +191,33 @@ class server
       AND p.produktID = '".$data."'
       ;";
 
-      $result = $this->db->query($stmt1);
-      if(!empty($result)){
+      $result1 = $this->db->query($stmt1);
+      if(!empty($result1)){
 
-         while ($row = $result->fetch_assoc()) 
+         while ($row1 = $result1->fetch_assoc()) 
          {
-           $ret[] = $row;
+           $ret1[] = $row1;
          }
 
-         $ausg += $ret[0];
+         
+         $ausg .= implode($ret1[0]);
 
       }
 
           //Gesamtumsatz:
-          $stmt1 = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
+          $stmt2 = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
           p.produktID = s.produktID
-          AND p.produktID = '".$data."'
           ;";
     
-          $result = $this->db->query($stmt1);
-          if(!empty($result)){
+          $result2 = $this->db->query($stmt2);
+          if(!empty($result2)){
     
-             while ($row = $result->fetch_assoc()) 
+             while ($row2 = $result2->fetch_assoc()) 
              {
-               $ret[] = $row;
+               $ret2[] = $row2;
              }
     
-             $ausg += $ret[0];
+             $ausg .= ", ".implode($ret2[0]);
     
           }
 
