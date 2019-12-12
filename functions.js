@@ -57,17 +57,6 @@ function getAllProducts()
 	request.send(null);
 }
 
-//braucht evt. gar kein JavaScript!
-function einkaufErfassen(){
-	var station = document.getElementById("stationID").value;
-	var produkt = document.getElementById("produktID").value;
-	var menge = document.getElementById("menge").value;
-
-
-	alert(station +  produkt + menge);
-
-}
-
 function fehlProdukte(){
 
 	var url = "serverREST.php";

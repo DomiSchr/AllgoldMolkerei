@@ -70,12 +70,27 @@ class server
 
    // Create
 
+   //Verkauf erfassen:
    public function addStation($data)
    {
-      
-         //TODO: Vor erfasstem Einkauf muss geprüft werden, ob genug Waren da sind!!
+         //Prüfen, ob genug Waren in Verkaufsstelle sind:
+         $ret = array();
+         $stmt = "SELECT  aktmenge FROM inventory
+         WHERE stationID = '".$data['stationID']."'
+         AND produktID = '".$data['produktID']."'
+         ;";
 
+         $result = $this->db->query($stmt);
 
+         while ($row = $result->fetch_assoc()) 
+         {
+           $ret[] = $row;
+         }
+
+         if(implode($ret[0]) < $data['menge']){
+            return "Zu wenig Ware in Verkaufsstelle!";
+         }
+         
 
          //Stmt updatet Inventory-Tabelle:
    	   $stmt = "UPDATE inventory SET aktmenge = aktmenge - '".$data['menge']."'
@@ -84,11 +99,6 @@ class server
          ;";
 
    	   $result = $this->db->query($stmt);
-
-   	   if($result == 1)
-   	   {
-   	   	
-   	   }
 
          //Stmt updatet Sale-Tabelle
    	   $stmt = "UPDATE sales SET menge = menge + '".$data['menge']."'
@@ -100,7 +110,7 @@ class server
 
    	   if($result == 1)
    	   {
-   	   	 return "Sale succesfully inserted.";
+   	   	 return "Einkauf wurde erfolgreich erfasst.";
    	   }
 
    	   return "your statment: ".$stmt."<br /> received result:".$result;
