@@ -120,11 +120,12 @@ function umsatzStation(){
 	{
 		if(request.status == 200)
 		{
-
-			//String hier parsen wie unten!!
+			if(request.responseText.indexOf(",") == 2){
+				document.getElementById("insert1").textContent = "ungültige Verkaufsstelle eingegeben!";
+			}
 			document.getElementById("insert1").textContent = "Umsatz Verkaufsstelle " + stationID2 + ": " + request.responseText.substring(2, 7) + "€";
-			var stat = request.responseText.substring(2, 7);
-			var ges = request.responseText.substring(8, 14);
+			var stat = request.responseText.substring(2, request.responseText.indexOf(","));
+			var ges = request.responseText.substring(request.responseText.indexOf(",") + 1, request.responseText.length - 2);
 			
 			document.getElementById("insert1").textContent = "Umsatz Verkaufsstelle " + stationID2 + " : " + stat + "€ entspricht: " + Math.round((stat/ges) * 100, 4) + "%";
 			document.getElementById("insert2").textContent = "Gesamtumsatz: " + ges + "€";
