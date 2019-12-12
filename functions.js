@@ -18,8 +18,7 @@ function test(){
 }
 
 
-function getAllProducts()
-{
+function getAllProducts(){
 	
 	var url = "serverREST.php";
 	
@@ -29,10 +28,8 @@ function getAllProducts()
 	var request = new XMLHttpRequest();
 	request.open("GET", url);
 
-	request.onload = function()
-	{
-		if(request.status == 200)
-		{
+	request.onload = function(){
+		if(request.status == 200){
 			var stationlist = request.responseText;
 
 
@@ -45,8 +42,8 @@ function getAllProducts()
 		           if(request2.status == 200)
 		           {
 					   var stationtable = request2.responseText;
-					   //Noch gelassen für Ausgabe!
-			           listStation(stationlist,stationtable);
+					   //Ausgabe:
+			           listProducts(stationlist,stationtable);
 		            }
 	            };
 	            request2.send(null);
@@ -82,8 +79,9 @@ function fehlProdukte(){
 	            {
 		           if(request2.status == 200)
 		           {
-			           var stationtable = request2.responseText;
-			           listStation(stationlist,stationtable);
+					   var stationtable = request2.responseText;
+					   //Ausgabe
+			           listProducts(stationlist,stationtable);
 		            }
 	            };
 	            request2.send(null);
@@ -158,8 +156,7 @@ function umsatzProdukt(){
 
 
 
-function listStation(stationlist, getstationtable)
-{
+function listProducts(stationlist, getstationtable){
 	var list = document.getElementById("list");
 	var stations = JSON.parse(stationlist);
 	var stationtable = JSON.parse(getstationtable);

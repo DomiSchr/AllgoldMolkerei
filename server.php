@@ -8,7 +8,7 @@ class server
 
    public function __construct()
    {
-      $this->db = new mysqli("localhost","root","", "AllgoldMolkerei"); // Funktioniert nicht hier!!
+      $this->db = new mysqli("localhost","root","", "AllgoldMolkerei");
 
       if (mysqli_connect_errno())
       {
@@ -17,14 +17,12 @@ class server
 
       $this->db->select_db("AllgoldMolkerei");
 
-      if($this->db->errno)
-      {
+      if($this->db->errno){
       	die ($this->db->error);
       }
    }
 
-  // Read 
-
+  // Produktkatalog anzeigen:
    public function getAllProducts()
    {
       $allProducts = array();
@@ -44,6 +42,8 @@ class server
       return  $allProducts;
    }
 
+
+   //Fehlende Produkte anzeigen:
    public function missingProducts($station)
    {
         $allStations = array();
@@ -68,10 +68,9 @@ class server
       return $allStations;
    }
 
-   // Create
 
    //Verkauf erfassen:
-   public function addStation($data)
+   public function insertSale($data)
    {
          //Prüfen, ob genug Waren in Verkaufsstelle sind:
          $ret = array();
@@ -117,9 +116,8 @@ class server
    }
 
 
-//Update:
 //Auslieferung:
-   public function updateStation($data)
+   public function supplyProducts($data)
    {
    
      $stmt = "UPDATE inventory SET aktMenge = '".$data['menge']."'
@@ -140,7 +138,7 @@ class server
 
 
    //Umsatz pro Station ausgeben:
-   public function umsatzStation($data)
+   public function salesStation($data)
    {
       $ret = array();
       $stmt = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
@@ -161,37 +159,28 @@ class server
       }
 
 
-                   //Gesamtumsatz:
-                   $stmt2 = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
-                   p.produktID = s.produktID
-                   ;";
+      //Gesamtumsatz:
+      $stmt2 = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
+      p.produktID = s.produktID
+      ;";
              
-                   $result2 = $this->db->query($stmt2);
-                   if(!empty($result2)){
+      $result2 = $this->db->query($stmt2);
+      if(!empty($result2)){
              
-                      while ($row2 = $result2->fetch_assoc()) 
-                      {
-                        $ret2[] = $row2;
-                      }
+         while ($row2 = $result2->fetch_assoc()) {
+            $ret2[] = $row2;
+         }
              
-                      $ausg .= ", ".implode($ret2[0]);
+         $ausg .= ", ".implode($ret2[0]);
              
-                   }
-
-
-
-
-         
-
-      
+      }
 
       return $ausg;
    }
 
 
    //Umsatz pro Produkt:
-   //geht noch nicht:
-   public function umsatzProdukt($data){
+   public function salesProduct($data){
       $ret = array();
       $ausg = "";
 
@@ -233,7 +222,6 @@ class server
 
       return $ausg;
    }
-
 }
 
 ?>
