@@ -48,7 +48,9 @@ class server
    {
         $allStations = array();
       
-        $stmt = "SELECT * FROM product p, inventory i WHERE
+      //Gibt u.A. Menge zurück, die zur Erreichung der Sollmenge fehlt!
+        $stmt = "SELECT p.produktID, p.name, p.preis, (i.sollMenge - i.aktMenge) AS menge
+         FROM product p, inventory i WHERE
         p.produktID = i.produktID
         AND i.aktMenge < i.minMenge
         AND i.stationID = '".$station."';";
