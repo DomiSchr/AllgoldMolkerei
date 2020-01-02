@@ -28,13 +28,15 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   CONSTRAINT `FK_produktID` FOREIGN KEY (`produktID`) REFERENCES `product`(`produktID`)
 );
 
---Fremschlüssel dazufügen!!
+
 CREATE TABLE IF NOT EXISTS `sales` (
   `salesID` int(10) NOT NULL AUTO_INCREMENT,
   `stationID` int(10) NOT NULL,
   `produktID` int(10) NOT NULL,
   `menge` int(10) NOT NULL,
   PRIMARY KEY (`salesID`),
+  CONSTRAINT `FK2_stationID` FOREIGN KEY (`stationID`) REFERENCES `station`(`stationID`),
+  CONSTRAINT `FK2_produktID` FOREIGN KEY (`produktID`) REFERENCES `product`(`produktID`)
 );
 
 
@@ -48,7 +50,7 @@ INSERT INTO `product` (`produktID`, `name`, `preis`, `menge`) VALUES
 
 
 INSERT INTO `station`(`stationID`, `beschreibung`, `standort`) VALUES 
-(1, "Automat1", "Kempten");
+(1, "Automat1", "Kempten"),
 (2, "Verkaufsstelle1", "Kempten");
 
 
@@ -74,8 +76,7 @@ INSERT INTO `sales`(`salesID`, `stationID`, `produktID`, `menge`) VALUES
 (8, 2, 4, 6);
 
 
-
-
+-- __________TEST______________________
 
 SELECT p.* FROM product p, inventory i WHERE
 p.produktID = i.produktID
