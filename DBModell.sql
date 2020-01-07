@@ -46,7 +46,10 @@ INSERT INTO `product` (`produktID`, `name`, `preis`, `menge`) VALUES
 (1, 'Vollmilch', '3.5', '1L'),
 (2, 'Käse', '1.2', '100g'),
 (3, 'Joghurt', '1.99', '500g'),
-(4, 'Frischkäse', '1.19', '175g');
+(4, 'Frischkäse', '1.19', '175g'),
+(5, 'Emmentaler', '3.95', '100g'),
+(6, 'Quark', '0.99', '150g'),
+(7, 'Buttermilch', '3.89', '1L');
 
 
 INSERT INTO `station`(`stationID`, `beschreibung`, `standort`) VALUES 
@@ -62,7 +65,13 @@ INSERT INTO `inventory`(`inventoryID`, `stationID`, `produktID`, `aktmenge` , `m
 (5, 2, 1, 4, 5, 15),
 (6, 2, 2, 5, 8, 15),
 (7, 2, 3, 6, 8, 20),
-(8, 2, 4, 7, 6, 20);
+(8, 2, 4, 7, 6, 20),
+(9, 1, 5, 5, 3, 10),
+(10, 2, 5, 1, 5, 10),
+(11, 1, 6, 2, 5, 15),
+(12, 2, 6, 1, 5, 10),
+(13, 1, 7, 1, 5, 10),
+(14, 2, 7, 1, 5, 10);
 
 
 INSERT INTO `sales`(`salesID`, `stationID`, `produktID`, `menge`) VALUES
@@ -73,7 +82,13 @@ INSERT INTO `sales`(`salesID`, `stationID`, `produktID`, `menge`) VALUES
 (5, 2, 1, 3),
 (6, 2, 2, 4),
 (7, 2, 3, 5),
-(8, 2, 4, 6);
+(8, 2, 4, 6),
+(9, 1, 5, 0),
+(10, 2, 5, 0),
+(11, 1, 6, 5),
+(12, 2, 6, 4),
+(13, 1, 7, 5),
+(14, 2, 7, 4);
 
 
 -- __________TEST______________________
