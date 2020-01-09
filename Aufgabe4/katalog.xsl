@@ -13,11 +13,7 @@
         <fo:region-after extent="2cm"/>
 
         </fo:simple-page-master>
-    </fo:layout-master-set>
-
-
-
-    <fo:layout-master-set>
+  
         <fo:simple-page-master master-name="template" page-height="21mm" page-width="297mm" margin-left = "2.5cm" margin-right="20mm" margin-top="20mm" margin-bottom="20mm">
 
 
@@ -30,7 +26,7 @@
 
       <fo:page-sequence master-reference="Katalog">
         <fo:flow flow-name="xsl-region-body">
-          <fo:block background-image="background.jpg" content-width="165mm" content-hight="65mm">
+          <fo:block background-image="background.jpg" content-width="165mm" content-height="65mm">
             <fo:block font-size="36px" space-before="4cm" space-after="4cm" text-align="center" margin-top="4cm" color="white" font-family="verdana">
               Allgold Datenbank Katalog
             </fo:block>
@@ -42,19 +38,20 @@
                 <fo:inline font-size="8pt" baseline-shift ="super">
                   1
                 </fo:inline>
-              <fo:footnote>
+              
               <fo:footnote-body>
                 <fo:block text-align-last="justify">
                   <fo:leader leader-length="100%" rule-thickness="0.5pt" leader-pattern="rule"/>
                 </fo:block>
                 <fo:block font-size="10pt" text-transform="none">
                   <fo:inline font-size="8pt" baseline-shift="super">1
-                  <fo:inline>
+                  </fo:inline>
                   Verfügbare Tabellen der Allgold Datenbank, für Details, bitte auf Namen klicken.
                 </fo:block>
               </fo:footnote-body>
-
+            </fo:footnote>  
             </fo:inline>
+            
             </fo:block>
               <xsl:for-each select="/mysqldump/database/table_data">
               <xsl:variable name="currLink" select="@name" />
@@ -158,7 +155,7 @@
                     <xsl:if test="$startpos &lt;=$curpos and $curpos &lt; $endpos">
 
                   <fo:table-cell>
-                     <fo:block><xsl:value-of select="../field[@name=$curfield]"/></fo:block>
+                     <fo:block><xsl:value-of select="../field[@name=$currfield]"/></fo:block>
                     </fo:table-cell>
                     </xsl:if>
                     </xsl:if>
@@ -175,12 +172,13 @@
     </fo:block>
   </xsl:otherwise>
   </xsl:choose>
-    </fo:block font-size="18px" space-before="0.5cm" space-after="0.5cm" text-align="center">
+    <fo:block font-size="18px" space-before="0.5cm" space-after="0.5cm" text-align="center">
       <fo:inline text-decoration="underline">
-
-<!-- hier weiter: 1:26!! -->
-
-
+        <fo:basic-link internal-destination="inhalt" show-destination="replace">
+          Zurück zum Inhaltsverzeichnis
+        </fo:basic-link>
+      </fo:inline>
+    </fo:block>
         </fo:flow>
     </fo:page-sequence>
     </xsl:for-each>
