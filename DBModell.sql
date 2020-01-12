@@ -40,6 +40,14 @@ CREATE TABLE IF NOT EXISTS `sales` (
 );
 
 
+CREATE TABLE IF NOT EXISTS `seller` (
+  `sellerID` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `vorname` varchar(10) NOT NULL,
+  `gebDate` date NOT NULL,
+  PRIMARY KEY (`sellerID`)
+);
+
 
 
 INSERT INTO `product` (`produktID`, `name`, `preis`, `menge`) VALUES
@@ -89,6 +97,13 @@ INSERT INTO `sales`(`salesID`, `stationID`, `produktID`, `menge`) VALUES
 (12, 2, 6, 4),
 (13, 1, 7, 5),
 (14, 2, 7, 4);
+
+
+INSERT INTO `seller`(`sellerID`, `name`, `vorname`, `gebDate` ) VALUES
+(1, "Hans", "Meyer", "1970-01-01"),
+(2, "Veronika", "Huber", "1980-12-12")
+(3, "Johannes", "Thoma", "1990-02-02");
+
 
 
 -- __________TEST______________________
