@@ -101,7 +101,7 @@ INSERT INTO `sales`(`salesID`, `stationID`, `produktID`, `menge`) VALUES
 
 INSERT INTO `seller`(`sellerID`, `name`, `vorname`, `gebDate` ) VALUES
 (1, "Hans", "Meyer", "1970-01-01"),
-(2, "Veronika", "Huber", "1980-12-12")
+(2, "Veronika", "Huber", "1980-12-12"),
 (3, "Johannes", "Thoma", "1990-02-02");
 
 
