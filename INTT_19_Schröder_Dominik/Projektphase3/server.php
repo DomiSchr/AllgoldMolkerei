@@ -1,4 +1,6 @@
 <?php
+//Einfache version ohne Framework, berücksichtigt das die meißten Browser kein PUT und DELETE unterstützen
+
 
 class server
 {
@@ -6,14 +8,14 @@ class server
 
    public function __construct()
    {
-      $this->db = new mysqli("192.168.101.221","grp101","ITTgrp101", "grp101_IKS");
+      $this->db = new mysqli("localhost","root","", "allgold");
 
       if (mysqli_connect_errno())
       {
       	die("error while connection to database!:".mysqli_connect_error());
       }
 
-      $this->db->select_db("grp101_IKS");
+      $this->db->select_db("allgold");
 
       if($this->db->errno){
       	die ($this->db->error);
@@ -32,7 +34,7 @@ class server
            return "your statement: ".$stmt."<br /> received result:".$result;
         }
 
-      while ($row = $result->fetch_assoc()) 
+      while ($row = $result->fetch_assoc())
       {
         $allProducts[] = $row;
       }
@@ -45,7 +47,7 @@ class server
    public function missingProducts($station)
    {
         $allStations = array();
-      
+
       //Gibt u.A. Menge zurück, die zur Erreichung der Sollmenge fehlt!
         $stmt = "SELECT p.produktID, p.name, p.preis, (i.sollMenge - i.aktMenge) AS menge
          FROM product p, inventory i WHERE
@@ -60,7 +62,7 @@ class server
            return "your statement: ".$stmt."<br /> received result:".$result;
         }
 
-      while ($row = $result->fetch_assoc()) 
+      while ($row = $result->fetch_assoc())
       {
         $allStations[] = $row;
       }
@@ -81,7 +83,7 @@ class server
 
          $result = $this->db->query($stmt);
 
-         while ($row = $result->fetch_assoc()) 
+         while ($row = $result->fetch_assoc())
          {
            $ret[] = $row;
          }
@@ -89,7 +91,7 @@ class server
          if(implode($ret[0]) < $data['menge']){
             return "Zu wenig Ware in Verkaufsstelle!";
          }
-         
+
 
          //Stmt updatet Inventory-Tabelle:
    	   $stmt = "UPDATE inventory SET aktmenge = aktmenge - '".$data['menge']."'
@@ -119,20 +121,20 @@ class server
 //Auslieferung:
    public function supplyProducts($data)
    {
-   
+
      $stmt = "UPDATE inventory SET aktMenge = '".$data['menge']."'
-                             WHERE stationID = ".$data['stationID']." 
+                             WHERE stationID = ".$data['stationID']."
                              AND produktID = '".$data['produktID']."'
      ;";
- 
+
      //commit db request
      $result = $this->db->query($stmt);
-   
+
      if($result == 1)
      {
        return "Die Produkte wurden erfolgreich ausgeliefert!";
      }
- 
+
      return "your statement: ".$stmt."<br /> received result:".$result;
    }
 
@@ -141,7 +143,7 @@ class server
    public function salesStation($data)
    {
       $ret = array();
-      $stmt = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
+      $stmt = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE
       p.produktID = s.produktID
       AND s.stationID = '".$data."'
       ;";
@@ -150,7 +152,7 @@ class server
       $result = $this->db->query($stmt);
       if(!empty($result)){
 
-         while ($row = $result->fetch_assoc()) 
+         while ($row = $result->fetch_assoc())
          {
            $ret[] = $row;
          }
@@ -160,19 +162,19 @@ class server
 
 
       //Gesamtumsatz:
-      $stmt2 = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
+      $stmt2 = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE
       p.produktID = s.produktID
       ;";
-             
+
       $result2 = $this->db->query($stmt2);
       if(!empty($result2)){
-             
+
          while ($row2 = $result2->fetch_assoc()) {
             $ret2[] = $row2;
          }
-             
+
          $ausg .= ", ".implode($ret2[0]);
-             
+
       }
 
       return $ausg;
@@ -185,7 +187,7 @@ class server
       $ausg = "";
 
       //Umsatz des Produkts:
-      $stmt1 = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
+      $stmt1 = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE
       p.produktID = s.produktID
       AND p.produktID = '".$data."'
       ;";
@@ -193,31 +195,31 @@ class server
       $result1 = $this->db->query($stmt1);
       if(!empty($result1)){
 
-         while ($row1 = $result1->fetch_assoc()) 
+         while ($row1 = $result1->fetch_assoc())
          {
            $ret1[] = $row1;
          }
 
-         
+
          $ausg .= implode($ret1[0]);
 
       }
 
           //Gesamtumsatz:
-          $stmt2 = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE 
+          $stmt2 = "SELECT SUM(s.menge * p.preis) AS umsatz FROM sales s, product p WHERE
           p.produktID = s.produktID
           ;";
-    
+
           $result2 = $this->db->query($stmt2);
           if(!empty($result2)){
-    
-             while ($row2 = $result2->fetch_assoc()) 
+
+             while ($row2 = $result2->fetch_assoc())
              {
                $ret2[] = $row2;
              }
-    
+
              $ausg .= ", ".implode($ret2[0]);
-    
+
           }
 
       return $ausg;
@@ -225,4 +227,3 @@ class server
 }
 
 ?>
-

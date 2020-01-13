@@ -1,17 +1,23 @@
 Hinweise zur Abgabe der Vorleistung für Internettechnologien
 Abgabe von Dominik Schröder
 
-
-- Server-Adresse: 192.168.101.221
-- Datenbank-Tabelle: grp101_IKS
-- Benutzername für die Datenbank: grp101
-- Passwort für die Datenbank: ITTgrp101
-
+- Lokal installiert:
+- Server-Adresse: localhost
+- Datenbank-Tabelle: allgold
+- Benutzername für die Datenbank: root
+- Kein Passwort
 
 Projektphase 3:
 - Datei DBModell.sql enthält nötige Tabellen und Beispieldaten
 - Die anderen Dateien in das htdocs Verzeichnis legen
 
+Projektphase 4:
+- Projekt in Netbeans importieren
 
 Projektphase 5:
+- In der virtuellen Umgebung gemacht, dazu Server konfiguriert:
+	- Server-Adresse: 192.168.101.221
+	- Datenbank-Tabelle: grp101_IKS
+	- Benutzername für die Datenbank: grp101
+	- Passwort für die Datenbank: ITTgrp101
 - Datei katalog.sh ausführen(unter Linux), erstellt katalog.pdf automatisch

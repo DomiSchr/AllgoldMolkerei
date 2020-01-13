@@ -10,18 +10,18 @@ function test(){
 			if(request.status == 404){
 				//Keine Ressource!
 			}
-		} 
+		}
 	};
 
 	request.open("GET", "test.txt", true);
-	request.send(); 
+	request.send();
 }
 
 
 function getAllProducts(){
-	
+
 	var url = "serverREST.php";
-	
+
 	var method = "action=GET";
 	url += "?"+method;
 
@@ -48,7 +48,7 @@ function getAllProducts(){
 	            };
 	            request2.send(null);
 
-			
+
 		}
 	};
 	request.send(null);
@@ -60,7 +60,7 @@ function fehlProdukte(){
 	var method = "action=GET";
 
 	var stationID = document.getElementById("stationID").value;
-	
+
 	url += "?"+method+"&"+"stationID"+"="+stationID;
 
 	var request = new XMLHttpRequest();
@@ -86,7 +86,7 @@ function fehlProdukte(){
 	            };
 	            request2.send(null);
 
-			
+
 		}
 	};
 	request.send(null);
@@ -98,7 +98,7 @@ function umsatzStation(){
 	var method = "action=GET";
 
 	var stationID2 = document.getElementById("stationID").value;
-	
+
 	url += "?"+method+"&"+"stationID2"+"="+stationID2;
 
 	var request = new XMLHttpRequest();
@@ -108,13 +108,13 @@ function umsatzStation(){
 		if(request.status == 200)
 		{
 			//Prüfen, ob ungültige Verkauffstelle eingegeben:
-			if(request.responseText.indexOf(",") == 2){
+			if(request.responseText.indexOf(",") == 1){
 
 				document.getElementById("insert1").textContent = "ungültige Verkaufsstelle eingegeben!";
 
 			} else {
-				var stat = request.responseText.substring(2, request.responseText.indexOf(","));
-				var ges = request.responseText.substring(request.responseText.indexOf(",") + 1, request.responseText.length - 2);
+				var stat = request.responseText.substring(1, request.responseText.indexOf(","));
+				var ges = request.responseText.substring(request.responseText.indexOf(",") + 1, request.responseText.length - 3);
 				document.getElementById("insert1").textContent = "Umsatz Verkaufsstelle " + stationID2 + " : " + stat + "€ entspricht: " + (Math.round((stat/ges)*10000))/100 + "%";
 				document.getElementById("insert2").textContent = "Gesamtumsatz: " + ges + "€";
 
@@ -131,7 +131,7 @@ function umsatzProdukt(){
 	var method = "action=GET";
 
 	var produktID = document.getElementById("produktID").value;
-	
+
 	url += "?"+method+"&"+"produktID"+"="+produktID;
 
 	var request = new XMLHttpRequest();
@@ -140,12 +140,12 @@ function umsatzProdukt(){
 	{
 		if(request.status == 200)
 		{
-			if(request.responseText.indexOf(",") == 2){
+			if(request.responseText.indexOf(",") == 1){
 				document.getElementById("insert3").textContent = "Ungültiges Produkt eingegeben!";
 
 			} else {
-				var prod = request.responseText.substring(2, request.responseText.indexOf(","));
-				var ges = request.responseText.substring(request.responseText.indexOf(",") + 1, request.responseText.length - 2);
+				var prod = request.responseText.substring(1, request.responseText.indexOf(","));
+				var ges = request.responseText.substring(request.responseText.indexOf(",") + 1, request.responseText.length - 3);
 				document.getElementById("insert3").textContent = "Umsatz Produkt " + produktID + " : " + prod + "€ entspricht: " + (Math.round((prod/ges)*10000))/100 + "%";
 				document.getElementById("insert4").textContent = "Gesamtumsatz: " + ges + "€";
 			}
@@ -175,7 +175,7 @@ function listProducts(stationlist, getstationtable){
     {
     	var json = stationtable[0]; //in this case only one object exitsts
     	var key = "td"+h;
-    	var tableval = json[key]; 
+    	var tableval = json[key];
     	if(tableval != undefined)
     	{
     		var tableCell = document.createElement("td");
@@ -183,7 +183,7 @@ function listProducts(stationlist, getstationtable){
     	    tableCell.appendChild(cellContent);
     	    tableRow.appendChild(tableCell);
 
-    	    tableattr++; 
+    	    tableattr++;
     	}
     }
     tablehead.appendChild(tableRow);
@@ -215,7 +215,7 @@ function listProducts(stationlist, getstationtable){
 	    }
         tablebody.appendChild(mycurrentRow);
     }
-	
+
 
 
 	table.appendChild(tablehead);
