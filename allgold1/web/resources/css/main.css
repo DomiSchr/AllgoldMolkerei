@@ -1,0 +1,44 @@
+.nav{height: 57px; width: 100%; background-color: blue;}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: 'Holtwood One SC', serif;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+body{margin:0px; background-color:#D9D9D9;}
+
+.bildbereich{height:250px; width:100%;background-image: url(../Allgold/bilder/hintergrund.jpg);}
+.overlay{height:250px; width:100%; background: rgba(0,0,0,0.4);}
+#allgold{color: white; font-family: 'Holtwood One SC', serif; font-size:40px; margin:0px; text-align:center; padding-top:75px}
+.punkte{ width:100%;}
+.unterpunkt{height:50px; width:500px;  background-color: blue;  margin-left: auto; margin-right: auto; margin-top:20px;}
+.link{height:50px; width:500px; text-decoration: none;}
+.upschrift{color:white; text-align:center; font-size:20px; font-family: 'Holtwood One SC', serif; padding-top:8px; text-decoration: none;}
+.fas{padding-right:20px;}
+.verkaufanlage{height:50px; width:600px;  background-color: blue;  margin-left: auto; margin-right: auto; margin-top:20px;}
+.inputfield{padding-top:15px; padding-left:15px; float:left; }
+.inputbutton{margin-top: 7px; margin-left:15px; float:left; width:100px; background-color:grey;}
+.verkauflöschen{height:50px; width:290px;  background-color: blue;  margin-left: auto; margin-right: auto; margin-top:20px;}
+.verkaufauflisten{height:50px; width:130px;  background-color: blue;  margin-left: auto; margin-right: auto; margin-top:20px}
+#tabelle{margin-right:auto; margin-left:auto;}
+

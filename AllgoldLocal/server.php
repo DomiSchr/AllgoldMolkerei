@@ -1,4 +1,6 @@
 <?php
+//Einfache version ohne Framework, berücksichtigt das die meißten Browser kein PUT und DELETE unterstützen
+
 
 class server
 {
@@ -6,14 +8,14 @@ class server
 
    public function __construct()
    {
-      $this->db = new mysqli("192.168.101.221","grp101","ITTgrp101", "grp101_IKS");
+      $this->db = new mysqli("localhost","root","", "AllgoldMolkerei");
 
       if (mysqli_connect_errno())
       {
       	die("error while connection to database!:".mysqli_connect_error());
       }
 
-      $this->db->select_db("grp101_IKS");
+      $this->db->select_db("AllgoldMolkerei");
 
       if($this->db->errno){
       	die ($this->db->error);

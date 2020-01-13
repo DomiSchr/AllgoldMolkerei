@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/cockpittemplate.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AllgoldTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="middle">
+            <h:panelGrid columns="2">
+                <h:dataTable value="#{productsController.items}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Produktbezeichnung"/>
+                        </f:facet>
+                        <h:outputText value="#{item.name}"/>
+                    </h:column>
+                      <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="GesamtMenge"/>
+                        </f:facet>
+                          <h:outputText value="#{inventoryController.getSelectedProductAmount(item.productID)}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:panelGrid>
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

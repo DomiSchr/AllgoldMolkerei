@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMachineSellersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMachineSellersLabel_machineId}"/>
+                    <h:outputText value="#{machineSellersController.selected.machineId}" title="#{bundle.ViewMachineSellersTitle_machineId}"/>
+                    <h:outputText value="#{bundle.ViewMachineSellersLabel_modell}"/>
+                    <h:outputText value="#{machineSellersController.selected.modell}" title="#{bundle.ViewMachineSellersTitle_modell}"/>
+                    <h:outputText value="#{bundle.ViewMachineSellersLabel_location}"/>
+                    <h:outputText value="#{machineSellersController.selected.location}" title="#{bundle.ViewMachineSellersTitle_location}"/>
+                    <h:outputText value="#{bundle.ViewMachineSellersLabel_firstDay}"/>
+                    <h:outputText value="#{machineSellersController.selected.firstDay}" title="#{bundle.ViewMachineSellersTitle_firstDay}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewMachineSellersLabel_status}"/>
+                    <h:outputText value="#{machineSellersController.selected.status}" title="#{bundle.ViewMachineSellersTitle_status}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{machineSellersController.destroyAndView}" value="#{bundle.ViewMachineSellersDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMachineSellersEditLink}"/>
+                <br />
+                <h:commandLink action="#{machineSellersController.prepareCreate}" value="#{bundle.ViewMachineSellersCreateLink}" />
+                <br />
+                <h:commandLink action="#{machineSellersController.prepareList}" value="#{bundle.ViewMachineSellersShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMachineSellersIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

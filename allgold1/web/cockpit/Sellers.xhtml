@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/cockpittemplate.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AllgoldTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="middle">
+      <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListInventoryEmpty}" rendered="#{verkaeufeController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{verkaeufeController.items.rowCount > 0}">
+                    <h:outputText value="#{verkaeufeController.pagination.pageFirstItem + 1}..#{verkaeufeController.pagination.pageLastItem + 1}/#{verkaeufeController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{verkaeufeController.previous}" value="#{bundle.Previous} #{verkaeufeController.pagination.pageSize}" rendered="#{verkaeufeController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{verkaeufeController.next}" value="#{bundle.Next} #{verkaeufeController.pagination.pageSize}" rendered="#{verkaeufeController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{verkaeufeController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="VerkaufID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.verkaufID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="StationID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.stationID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ProductID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productID}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Anzahl"/>
+                            </f:facet>
+                            <h:outputText value="#{item.anzahl}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Standort"/>
+                            </f:facet>
+                            <h:dataTable value="#{stationController.getStation(item.stationID)}" var="station">
+                                <h:column>
+                                    <h:outputText value="#{station.location}"/>
+                                 </h:column>
+                                <h:column>
+                                    <h:outputText value="#{station.type}"/>
+                                 </h:column>
+                            </h:dataTable>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Produktbezeichnung"/>
+                            </f:facet>
+                              <h:dataTable value="#{productsController.getProducts(item.productID)}" var="product">
+                                <h:column>
+                                    <h:outputText value="#{product.name}"/>
+                                 </h:column>
+                            </h:dataTable>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{verkaeufeController.prepareVerkaeufeByOneProductAmount()}" value="Umsatz dieses Produktes"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{verkaeufeController.prepareVerkaeufeByAllProductAmount()}" value="Gesamtlagerbestand aller Produkte"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListInventoryIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

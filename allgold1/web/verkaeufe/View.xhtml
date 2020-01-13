@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVerkaeufeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVerkaeufeLabel_verkaufID}"/>
+                    <h:outputText value="#{verkaeufeController.selected.verkaufID}" title="#{bundle.ViewVerkaeufeTitle_verkaufID}"/>
+                    <h:outputText value="#{bundle.ViewVerkaeufeLabel_stationID}"/>
+                    <h:outputText value="#{verkaeufeController.selected.stationID}" title="#{bundle.ViewVerkaeufeTitle_stationID}"/>
+                    <h:outputText value="#{bundle.ViewVerkaeufeLabel_productID}"/>
+                    <h:outputText value="#{verkaeufeController.selected.productID}" title="#{bundle.ViewVerkaeufeTitle_productID}"/>
+                    <h:outputText value="#{bundle.ViewVerkaeufeLabel_anzahl}"/>
+                    <h:outputText value="#{verkaeufeController.selected.anzahl}" title="#{bundle.ViewVerkaeufeTitle_anzahl}"/>
+                    <h:outputText value="#{bundle.ViewVerkaeufeLabel_time}"/>
+                    <h:outputText value="#{verkaeufeController.selected.time}" title="#{bundle.ViewVerkaeufeTitle_time}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{verkaeufeController.destroyAndView}" value="#{bundle.ViewVerkaeufeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVerkaeufeEditLink}"/>
+                <br />
+                <h:commandLink action="#{verkaeufeController.prepareCreate}" value="#{bundle.ViewVerkaeufeCreateLink}" />
+                <br />
+                <h:commandLink action="#{verkaeufeController.prepareList}" value="#{bundle.ViewVerkaeufeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVerkaeufeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

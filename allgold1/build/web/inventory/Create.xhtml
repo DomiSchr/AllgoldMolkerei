@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateInventoryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateInventoryLabel_inventoryID}" for="inventoryID" />
+                    <h:inputText id="inventoryID" value="#{inventoryController.selected.inventoryID}" title="#{bundle.CreateInventoryTitle_inventoryID}" required="true" requiredMessage="#{bundle.CreateInventoryRequiredMessage_inventoryID}"/>
+                    <h:outputLabel value="#{bundle.CreateInventoryLabel_stationID}" for="stationID" />
+                    <h:inputText id="stationID" value="#{inventoryController.selected.stationID}" title="#{bundle.CreateInventoryTitle_stationID}" required="true" requiredMessage="#{bundle.CreateInventoryRequiredMessage_stationID}"/>
+                    <h:outputLabel value="#{bundle.CreateInventoryLabel_productID}" for="productID" />
+                    <h:inputText id="productID" value="#{inventoryController.selected.productID}" title="#{bundle.CreateInventoryTitle_productID}" required="true" requiredMessage="#{bundle.CreateInventoryRequiredMessage_productID}"/>
+                    <h:outputLabel value="#{bundle.CreateInventoryLabel_currentAmount}" for="currentAmount" />
+                    <h:inputText id="currentAmount" value="#{inventoryController.selected.currentAmount}" title="#{bundle.CreateInventoryTitle_currentAmount}" required="true" requiredMessage="#{bundle.CreateInventoryRequiredMessage_currentAmount}"/>
+                    <h:outputLabel value="#{bundle.CreateInventoryLabel_targetAmount}" for="targetAmount" />
+                    <h:inputText id="targetAmount" value="#{inventoryController.selected.targetAmount}" title="#{bundle.CreateInventoryTitle_targetAmount}" required="true" requiredMessage="#{bundle.CreateInventoryRequiredMessage_targetAmount}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{inventoryController.create}" value="#{bundle.CreateInventorySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{inventoryController.prepareList}" value="#{bundle.CreateInventoryShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateInventoryIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

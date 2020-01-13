@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/cockpittemplate.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AllgoldTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="middle">
+            <h1> Umsatz des Produktes </h1>
+            <br/>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Produktbezeichnung" for="prodID" />
+                <h:dataTable value="#{productsController.getProducts(verkaeufeController.selected.productID)}" var="prod">
+                    <h:column>
+                        <h:outputText value="#{prod.name}"/>
+                    </h:column>
+                </h:dataTable>
+                <h:outputLabel value="Umsatz" for="prodID"/>
+                <h:outputText value="#{verkaeufeController.getSelectedVerkaeufeAmount(verkaeufeController.selected.productID)}"/>
+            </h:panelGrid>
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

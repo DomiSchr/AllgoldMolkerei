@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMachineSellersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMachineSellersLabel_machineId}" for="machineId" />
+                    <h:inputText id="machineId" value="#{machineSellersController.selected.machineId}" title="#{bundle.CreateMachineSellersTitle_machineId}" required="true" requiredMessage="#{bundle.CreateMachineSellersRequiredMessage_machineId}"/>
+                    <h:outputLabel value="#{bundle.CreateMachineSellersLabel_modell}" for="modell" />
+                    <h:inputTextarea rows="4" cols="30" id="modell" value="#{machineSellersController.selected.modell}" title="#{bundle.CreateMachineSellersTitle_modell}" required="true" requiredMessage="#{bundle.CreateMachineSellersRequiredMessage_modell}"/>
+                    <h:outputLabel value="#{bundle.CreateMachineSellersLabel_location}" for="location" />
+                    <h:inputText id="location" value="#{machineSellersController.selected.location}" title="#{bundle.CreateMachineSellersTitle_location}" required="true" requiredMessage="#{bundle.CreateMachineSellersRequiredMessage_location}"/>
+                    <h:outputLabel value="#{bundle.CreateMachineSellersLabel_firstDay}" for="firstDay" />
+                    <h:inputText id="firstDay" value="#{machineSellersController.selected.firstDay}" title="#{bundle.CreateMachineSellersTitle_firstDay}" required="true" requiredMessage="#{bundle.CreateMachineSellersRequiredMessage_firstDay}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateMachineSellersLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{machineSellersController.selected.status}" title="#{bundle.CreateMachineSellersTitle_status}" required="true" requiredMessage="#{bundle.CreateMachineSellersRequiredMessage_status}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{machineSellersController.create}" value="#{bundle.CreateMachineSellersSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{machineSellersController.prepareList}" value="#{bundle.CreateMachineSellersShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMachineSellersIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

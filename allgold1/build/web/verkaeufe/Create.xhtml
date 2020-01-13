@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateVerkaeufeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateVerkaeufeLabel_verkaufID}" for="verkaufID" />
+                    <h:inputText id="verkaufID" value="#{verkaeufeController.selected.verkaufID}" title="#{bundle.CreateVerkaeufeTitle_verkaufID}" required="true" requiredMessage="#{bundle.CreateVerkaeufeRequiredMessage_verkaufID}"/>
+                    <h:outputLabel value="#{bundle.CreateVerkaeufeLabel_stationID}" for="stationID" />
+                    <h:inputText id="stationID" value="#{verkaeufeController.selected.stationID}" title="#{bundle.CreateVerkaeufeTitle_stationID}" required="true" requiredMessage="#{bundle.CreateVerkaeufeRequiredMessage_stationID}"/>
+                    <h:outputLabel value="#{bundle.CreateVerkaeufeLabel_productID}" for="productID" />
+                    <h:inputText id="productID" value="#{verkaeufeController.selected.productID}" title="#{bundle.CreateVerkaeufeTitle_productID}" required="true" requiredMessage="#{bundle.CreateVerkaeufeRequiredMessage_productID}"/>
+                    <h:outputLabel value="#{bundle.CreateVerkaeufeLabel_anzahl}" for="anzahl" />
+                    <h:inputText id="anzahl" value="#{verkaeufeController.selected.anzahl}" title="#{bundle.CreateVerkaeufeTitle_anzahl}" required="true" requiredMessage="#{bundle.CreateVerkaeufeRequiredMessage_anzahl}"/>
+                    <h:outputLabel value="#{bundle.CreateVerkaeufeLabel_time}" for="time" />
+                    <h:inputText id="time" value="#{verkaeufeController.selected.time}" title="#{bundle.CreateVerkaeufeTitle_time}" required="true" requiredMessage="#{bundle.CreateVerkaeufeRequiredMessage_time}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{verkaeufeController.create}" value="#{bundle.CreateVerkaeufeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{verkaeufeController.prepareList}" value="#{bundle.CreateVerkaeufeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateVerkaeufeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditStationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditStationLabel_stationID}" for="stationID" />
+                    <h:inputText id="stationID" value="#{stationController.selected.stationID}" title="#{bundle.EditStationTitle_stationID}" required="true" requiredMessage="#{bundle.EditStationRequiredMessage_stationID}"/>
+                    <h:outputLabel value="#{bundle.EditStationLabel_coordsA}" for="coordsA" />
+                    <h:inputText id="coordsA" value="#{stationController.selected.coordsA}" title="#{bundle.EditStationTitle_coordsA}" required="true" requiredMessage="#{bundle.EditStationRequiredMessage_coordsA}"/>
+                    <h:outputLabel value="#{bundle.EditStationLabel_coordsL}" for="coordsL" />
+                    <h:inputText id="coordsL" value="#{stationController.selected.coordsL}" title="#{bundle.EditStationTitle_coordsL}" required="true" requiredMessage="#{bundle.EditStationRequiredMessage_coordsL}"/>
+                    <h:outputLabel value="#{bundle.EditStationLabel_location}" for="location" />
+                    <h:inputText id="location" value="#{stationController.selected.location}" title="#{bundle.EditStationTitle_location}" required="true" requiredMessage="#{bundle.EditStationRequiredMessage_location}"/>
+                    <h:outputLabel value="#{bundle.EditStationLabel_type}" for="type" />
+                    <h:inputText id="type" value="#{stationController.selected.type}" title="#{bundle.EditStationTitle_type}" required="true" requiredMessage="#{bundle.EditStationRequiredMessage_type}"/>
+                    <h:outputLabel value="#{bundle.EditStationLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{stationController.selected.description}" title="#{bundle.EditStationTitle_description}" required="true" requiredMessage="#{bundle.EditStationRequiredMessage_description}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{stationController.update}" value="#{bundle.EditStationSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditStationViewLink}"/>
+                <br />
+                <h:commandLink action="#{stationController.prepareList}" value="#{bundle.EditStationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditStationIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
