@@ -14,7 +14,7 @@
 
         </fo:simple-page-master>
   
-        <fo:simple-page-master master-name="template" page-height="21mm" page-width="297mm" margin-left = "2.5cm" margin-right="20mm" margin-top="20mm" margin-bottom="20mm">
+        <fo:simple-page-master master-name="template" page-height="21cm" page-width="297mm" margin-left = "2.5cm" margin-right="20mm" margin-top="20mm" margin-bottom="20mm">
 
 
         <fo:region-body margin-top="2cm" margin-bottom="2cm" />
@@ -26,12 +26,12 @@
 
       <fo:page-sequence master-reference="Katalog">
         <fo:flow flow-name="xsl-region-body">
-          <fo:block background-image="background.jpg" content-width="165mm" content-height="65mm">
+          <fo:block background-image="background.jpg" background-repeat="no-repeat" content-width="160mm" content-height="60mm">
             <fo:block font-size="36px" space-before="4cm" space-after="4cm" text-align="center" margin-top="4cm" color="white" font-family="verdana">
               Allgold Datenbank Katalog
             </fo:block>
           </fo:block>
-          <fo:block id="inhalt" font-size="16px" space-before="1,5cm" space-after="0,5cm" text-align="center" text-transform="uppercase">
+          <fo:block id="inhalt" font-size="16px" space-before="1.5cm" space-after="0.5cm" text-align="center" text-transform="uppercase">
             <fo:inline text-decoration="underline" font-weight="bold">
               Inhaltsverzeichnis
               <fo:footnote>
