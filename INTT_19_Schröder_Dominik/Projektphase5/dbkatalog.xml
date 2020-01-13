@@ -1,0 +1,326 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="grp101_IKS">
+	<table_structure name="inventory">
+		<field Field="inventoryID" Type="int(10)" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="stationID" Type="int(10)" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="produktID" Type="int(10)" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="aktMenge" Type="int(10)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="minMenge" Type="int(10)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="sollMenge" Type="int(10)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="inventory" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="inventoryID" Collation="A" Cardinality="14" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="inventory" Non_unique="1" Key_name="FK_stationID" Seq_in_index="1" Column_name="stationID" Collation="A" Cardinality="2" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="inventory" Non_unique="1" Key_name="FK_produktID" Seq_in_index="1" Column_name="produktID" Collation="A" Cardinality="7" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="inventory" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="14" Avg_row_length="1170" Data_length="16384" Max_data_length="0" Index_length="32768" Data_free="0" Auto_increment="15" Create_time="2020-01-08 15:24:15" Update_time="2020-01-08 15:24:16" Collation="latin1_swedish_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_data name="inventory">
+	<row>
+		<field name="inventoryID">1</field>
+		<field name="stationID">1</field>
+		<field name="produktID">1</field>
+		<field name="aktMenge">5</field>
+		<field name="minMenge">3</field>
+		<field name="sollMenge">10</field>
+	</row>
+	<row>
+		<field name="inventoryID">2</field>
+		<field name="stationID">1</field>
+		<field name="produktID">2</field>
+		<field name="aktMenge">1</field>
+		<field name="minMenge">5</field>
+		<field name="sollMenge">10</field>
+	</row>
+	<row>
+		<field name="inventoryID">3</field>
+		<field name="stationID">1</field>
+		<field name="produktID">3</field>
+		<field name="aktMenge">2</field>
+		<field name="minMenge">5</field>
+		<field name="sollMenge">15</field>
+	</row>
+	<row>
+		<field name="inventoryID">4</field>
+		<field name="stationID">1</field>
+		<field name="produktID">4</field>
+		<field name="aktMenge">5</field>
+		<field name="minMenge">4</field>
+		<field name="sollMenge">15</field>
+	</row>
+	<row>
+		<field name="inventoryID">5</field>
+		<field name="stationID">2</field>
+		<field name="produktID">1</field>
+		<field name="aktMenge">4</field>
+		<field name="minMenge">5</field>
+		<field name="sollMenge">15</field>
+	</row>
+	<row>
+		<field name="inventoryID">6</field>
+		<field name="stationID">2</field>
+		<field name="produktID">2</field>
+		<field name="aktMenge">5</field>
+		<field name="minMenge">8</field>
+		<field name="sollMenge">15</field>
+	</row>
+	<row>
+		<field name="inventoryID">7</field>
+		<field name="stationID">2</field>
+		<field name="produktID">3</field>
+		<field name="aktMenge">6</field>
+		<field name="minMenge">8</field>
+		<field name="sollMenge">20</field>
+	</row>
+	<row>
+		<field name="inventoryID">8</field>
+		<field name="stationID">2</field>
+		<field name="produktID">4</field>
+		<field name="aktMenge">7</field>
+		<field name="minMenge">6</field>
+		<field name="sollMenge">20</field>
+	</row>
+	<row>
+		<field name="inventoryID">9</field>
+		<field name="stationID">1</field>
+		<field name="produktID">5</field>
+		<field name="aktMenge">5</field>
+		<field name="minMenge">3</field>
+		<field name="sollMenge">10</field>
+	</row>
+	<row>
+		<field name="inventoryID">10</field>
+		<field name="stationID">2</field>
+		<field name="produktID">5</field>
+		<field name="aktMenge">1</field>
+		<field name="minMenge">5</field>
+		<field name="sollMenge">10</field>
+	</row>
+	<row>
+		<field name="inventoryID">11</field>
+		<field name="stationID">1</field>
+		<field name="produktID">6</field>
+		<field name="aktMenge">2</field>
+		<field name="minMenge">5</field>
+		<field name="sollMenge">15</field>
+	</row>
+	<row>
+		<field name="inventoryID">12</field>
+		<field name="stationID">2</field>
+		<field name="produktID">6</field>
+		<field name="aktMenge">1</field>
+		<field name="minMenge">5</field>
+		<field name="sollMenge">10</field>
+	</row>
+	<row>
+		<field name="inventoryID">13</field>
+		<field name="stationID">1</field>
+		<field name="produktID">7</field>
+		<field name="aktMenge">1</field>
+		<field name="minMenge">5</field>
+		<field name="sollMenge">10</field>
+	</row>
+	<row>
+		<field name="inventoryID">14</field>
+		<field name="stationID">2</field>
+		<field name="produktID">7</field>
+		<field name="aktMenge">1</field>
+		<field name="minMenge">5</field>
+		<field name="sollMenge">10</field>
+	</row>
+	</table_data>
+	<table_structure name="product">
+		<field Field="produktID" Type="int(10)" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="name" Type="varchar(30)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="preis" Type="decimal(10,2)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="menge" Type="varchar(10)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="product" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="produktID" Collation="A" Cardinality="7" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="product" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="7" Avg_row_length="2340" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Auto_increment="8" Create_time="2020-01-08 15:24:15" Update_time="2020-01-08 15:24:16" Collation="latin1_swedish_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_data name="product">
+	<row>
+		<field name="produktID">1</field>
+		<field name="name">Vollmilch</field>
+		<field name="preis">3.50</field>
+		<field name="menge">1L</field>
+	</row>
+	<row>
+		<field name="produktID">2</field>
+		<field name="name">Käse</field>
+		<field name="preis">1.20</field>
+		<field name="menge">100g</field>
+	</row>
+	<row>
+		<field name="produktID">3</field>
+		<field name="name">Joghurt</field>
+		<field name="preis">1.99</field>
+		<field name="menge">500g</field>
+	</row>
+	<row>
+		<field name="produktID">4</field>
+		<field name="name">Frischkäse</field>
+		<field name="preis">1.19</field>
+		<field name="menge">175g</field>
+	</row>
+	<row>
+		<field name="produktID">5</field>
+		<field name="name">Emmentaler</field>
+		<field name="preis">3.95</field>
+		<field name="menge">100g</field>
+	</row>
+	<row>
+		<field name="produktID">6</field>
+		<field name="name">Quark</field>
+		<field name="preis">0.99</field>
+		<field name="menge">150g</field>
+	</row>
+	<row>
+		<field name="produktID">7</field>
+		<field name="name">Buttermilch</field>
+		<field name="preis">3.89</field>
+		<field name="menge">1L</field>
+	</row>
+	</table_data>
+	<table_structure name="sales">
+		<field Field="salesID" Type="int(10)" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="stationID" Type="int(10)" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="produktID" Type="int(10)" Null="NO" Key="MUL" Extra="" Comment="" />
+		<field Field="menge" Type="int(10)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="sales" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="salesID" Collation="A" Cardinality="14" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="sales" Non_unique="1" Key_name="FK2_stationID" Seq_in_index="1" Column_name="stationID" Collation="A" Cardinality="2" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<key Table="sales" Non_unique="1" Key_name="FK2_produktID" Seq_in_index="1" Column_name="produktID" Collation="A" Cardinality="7" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="sales" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="14" Avg_row_length="1170" Data_length="16384" Max_data_length="0" Index_length="32768" Data_free="0" Auto_increment="15" Create_time="2020-01-08 15:24:16" Update_time="2020-01-08 15:24:16" Collation="latin1_swedish_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_data name="sales">
+	<row>
+		<field name="salesID">1</field>
+		<field name="stationID">1</field>
+		<field name="produktID">1</field>
+		<field name="menge">0</field>
+	</row>
+	<row>
+		<field name="salesID">2</field>
+		<field name="stationID">1</field>
+		<field name="produktID">2</field>
+		<field name="menge">0</field>
+	</row>
+	<row>
+		<field name="salesID">3</field>
+		<field name="stationID">1</field>
+		<field name="produktID">3</field>
+		<field name="menge">5</field>
+	</row>
+	<row>
+		<field name="salesID">4</field>
+		<field name="stationID">1</field>
+		<field name="produktID">4</field>
+		<field name="menge">4</field>
+	</row>
+	<row>
+		<field name="salesID">5</field>
+		<field name="stationID">2</field>
+		<field name="produktID">1</field>
+		<field name="menge">3</field>
+	</row>
+	<row>
+		<field name="salesID">6</field>
+		<field name="stationID">2</field>
+		<field name="produktID">2</field>
+		<field name="menge">4</field>
+	</row>
+	<row>
+		<field name="salesID">7</field>
+		<field name="stationID">2</field>
+		<field name="produktID">3</field>
+		<field name="menge">5</field>
+	</row>
+	<row>
+		<field name="salesID">8</field>
+		<field name="stationID">2</field>
+		<field name="produktID">4</field>
+		<field name="menge">6</field>
+	</row>
+	<row>
+		<field name="salesID">9</field>
+		<field name="stationID">1</field>
+		<field name="produktID">5</field>
+		<field name="menge">0</field>
+	</row>
+	<row>
+		<field name="salesID">10</field>
+		<field name="stationID">2</field>
+		<field name="produktID">5</field>
+		<field name="menge">0</field>
+	</row>
+	<row>
+		<field name="salesID">11</field>
+		<field name="stationID">1</field>
+		<field name="produktID">6</field>
+		<field name="menge">5</field>
+	</row>
+	<row>
+		<field name="salesID">12</field>
+		<field name="stationID">2</field>
+		<field name="produktID">6</field>
+		<field name="menge">4</field>
+	</row>
+	<row>
+		<field name="salesID">13</field>
+		<field name="stationID">1</field>
+		<field name="produktID">7</field>
+		<field name="menge">5</field>
+	</row>
+	<row>
+		<field name="salesID">14</field>
+		<field name="stationID">2</field>
+		<field name="produktID">7</field>
+		<field name="menge">4</field>
+	</row>
+	</table_data>
+	<table_structure name="seller">
+		<field Field="sellerID" Type="int(10)" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="name" Type="varchar(30)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="vorname" Type="varchar(30)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="gebDate" Type="date" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="seller" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="sellerID" Collation="A" Cardinality="3" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="seller" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="3" Avg_row_length="5461" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Auto_increment="4" Create_time="2020-01-12 18:47:12" Update_time="2020-01-13 13:20:36" Collation="latin1_swedish_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_data name="seller">
+	<row>
+		<field name="sellerID">1</field>
+		<field name="name">Hans</field>
+		<field name="vorname">Meyer</field>
+		<field name="gebDate">1970-01-01</field>
+	</row>
+	<row>
+		<field name="sellerID">2</field>
+		<field name="name">Thoma</field>
+		<field name="vorname">Johannes</field>
+		<field name="gebDate">1980-03-03</field>
+	</row>
+	<row>
+		<field name="sellerID">3</field>
+		<field name="name">Veronika</field>
+		<field name="vorname">Bosch</field>
+		<field name="gebDate">1990-04-04</field>
+	</row>
+	</table_data>
+	<table_structure name="station">
+		<field Field="stationID" Type="int(10)" Null="NO" Key="PRI" Extra="auto_increment" Comment="" />
+		<field Field="beschreibung" Type="varchar(30)" Null="NO" Key="" Extra="" Comment="" />
+		<field Field="standort" Type="varchar(30)" Null="NO" Key="" Extra="" Comment="" />
+		<key Table="station" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="stationID" Collation="A" Cardinality="2" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="station" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="2" Avg_row_length="8192" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Auto_increment="3" Create_time="2020-01-08 15:24:15" Update_time="2020-01-08 15:24:16" Collation="latin1_swedish_ci" Create_options="" Comment="" />
+	</table_structure>
+	<table_data name="station">
+	<row>
+		<field name="stationID">1</field>
+		<field name="beschreibung">Automat1</field>
+		<field name="standort">Kempten</field>
+	</row>
+	<row>
+		<field name="stationID">2</field>
+		<field name="beschreibung">Verkaufsstelle1</field>
+		<field name="standort">Kempten</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>
